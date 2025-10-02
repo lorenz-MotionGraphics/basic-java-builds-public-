@@ -1,0 +1,74 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>your.group.id</groupId>
+    <artifactId>your-artifact-id</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <!--
+        Define external repositories here.
+        JitPack is required to fetch dependencies published via GitHub (like com.github.gotson.nightmonkeys).
+    -->
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <!-- 1. Google Firebase Admin SDK (Core Dependency) -->
+        <dependency>
+            <groupId>com.google.firebase</groupId>
+            <artifactId>firebase-admin</artifactId>
+            <version>9.2.0</version>
+        </dependency>
+
+        <!-- 2. SLF4J Logging Implementation (Fixes the "No SLF4J providers were found" warning) -->
+        <!-- This directs log messages to the console output. -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>2.0.13</version>
+        </dependency>
+
+        <!-- 3. Image Processing Dependencies (WebP Support) -->
+        <dependency>
+            <groupId>org.sejda.imageio</groupId>
+            <artifactId>webp-imageio</artifactId>
+            <version>0.1.6</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.gotson.nightmonkeys</groupId>
+            <artifactId>imageio-common</artifactId>
+            <version>1.1.0</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.gotson.nightmonkeys</groupId>
+            <artifactId>imageio-webp</artifactId>
+            <version>1.1.0</version>
+        </dependency>
+    </dependencies>
+
+    <!--
+        Configuration for building and running the project.
+    -->
+    <build>
+        <plugins>
+            <!-- Define the exec-maven-plugin to easily run the main class -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <!-- IMPORTANT: Set this to the name of your main class (e.g., 'main' or 'App') -->
+                    <mainClass>main</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
